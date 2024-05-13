@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Réservations</title>
+    <style>
+
+         table {
+             width: 100%;
+             border-collapse: collapse;
+         }
+         th, td {
+             padding: 8px;
+             text-align: left;
+             border-bottom: 1px solid #ddd;
+         }
+         th {
+             background-color: #f2f2f2;
+         }
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>Liste des Réservations</h1>
+</header>
+<main>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Catégorie du Terrain</th>
+            <th>Date de la Réservation</th>
+            <th>Durée de la Réservation</th>
+            <th>Téléphone</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Utilisez Thymeleaf pour itérer sur la liste des réservations -->
+        <tr th:each="reservation : ${reservations}">
+            <td th:text="${reservation.Id}"></td>
+            <td th:text="${reservation.nom}"></td>
+            <td th:text="${reservation.catterrain}"></td>
+            <td th:text="${reservation.datereservation}"></td>
+            <td th:text="${reservation.dureereservation} + ' heures'"></td>
+            <td th:text="' +212 ' +${reservation.telephone}"></td>
+            <td>
+                <a th:href="@{update(id=${reservation.Id})}">Editer</a>
+                <a th:href="@{delete(id=${reservation.Id})}">Supprimer</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</main>
+<br>
+<footer>
+    <a href="create">Créer une Réservation</a>
+</footer>
+</body>
+</html>

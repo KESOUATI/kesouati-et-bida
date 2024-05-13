@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportCasa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 60px;
+        }
+        header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px; /* Add margin bottom to create space between header and form */
+        }
+        main {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            margin: 0 auto; /* Center the main content */
+            max-width: 600px; /* Limit the width of the main content */
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        form {
+            margin-bottom: 20px; /* Add margin bottom to create space between form and footer */
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">SportCasa</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Reservation/create">Réservation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Reservation/List">Liste des réservations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Reservation/terrain">Nos terrains</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <h1>Create Your Reservation</h1>
+</header>
+<main>
+    <form th:action="@{save}" method="post">
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom :</label>
+            <input type="text" class="form-control" id="nom" name="nom" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="catterrain" class="form-label">Catégorie du terrain :</label>
+            <select class="form-select" id="catterrain" name="catterrain">
+                <option value="football">Football</option>
+                <option value="basketball">Basketball</option>
+                <option value="tennis">Tennis</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="datereservation" class="form-label">Date de la réservation :</label>
+            <input type="date" class="form-control" id="datereservation" name="datereservation" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="dureereservation" class="form-label">Durée de la réservation (en heures) :</label>
+            <input type="number" class="form-control" id="dureereservation" name="dureereservation" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="telephone" class="form-label">Téléphone :</label>
+            <input type="tel" class="form-control" id="telephone" name="telephone" required>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Save">
+    </form>
+    <span th:text="${Message}"></span>
+</main>
+
+<footer>
+    <a href="List" class="btn btn-secondary">Liste des reservations</a>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
